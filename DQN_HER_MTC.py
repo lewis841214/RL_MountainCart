@@ -8,7 +8,7 @@ import gym
 from gym import Env, spaces
 import numpy as np
 
-model_class = DQN  # works also with DQN ,SAC, DDPG and TD3, QRDQN
+model_class = QRDQN  # works also with DQN ,SAC, DDPG and TD3, QRDQN
 MTC = gym.make("MountainCar-v0")
 MTC._max_episode_steps = 1000
 
@@ -176,7 +176,7 @@ goal_selection_strategy = "final" # equivalent to GoalSelectionStrategy.FUTURE
 # If True the HER transitions will get sampled online
 online_sampling = True
 # Time limit for the episodes
-max_episode_length = 10000
+max_episode_length = 1000
 
 # Initialize the model
 model = model_class(
@@ -193,7 +193,7 @@ model = model_class(
         max_episode_length=max_episode_length,
     ),
     verbose=1,
-    buffer_size = 1000000000
+    buffer_size = 10000000
 )
 
 # Train the model
