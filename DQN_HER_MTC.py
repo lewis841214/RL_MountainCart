@@ -8,7 +8,7 @@ import gym
 from gym import Env, spaces
 import numpy as np
 
-model_class = QRDQN  # works also with DQN ,SAC, DDPG and TD3, QRDQN
+model_class = DQN  # works also with DQN ,SAC, DDPG and TD3, QRDQN
 MTC = gym.make("MountainCar-v0")
 MTC._max_episode_steps = 1000
 
@@ -197,7 +197,7 @@ model = model_class(
 )
 
 # Train the model
-model.learn(200000)
+model.learn(500000)
 
 model.save("./her_bit_env")
 # Because it needs access to `env.compute_reward()`
